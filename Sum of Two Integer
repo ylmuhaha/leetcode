@@ -1,0 +1,22 @@
+/*Calculate the sum of two integers a and b, but you are not allowed to use the operator + and -.
+
+Example:
+Given a = 1 and b = 2, return 3.
+*/
+
+
+class Solution {
+public:
+    int getSum(int a, int b) {
+        int carry = a&b;//进位的那些位
+        int Mediasum =a^b; //A+B不产生进位
+        int sum = Mediasum;
+        while(carry){
+             sum = Mediasum^(carry<<1);//左移一位表示进位，异或表示相加
+            carry = Mediasum&(carry<<1);//再相与表示进位的位
+            Mediasum = sum; 
+        }
+        return sum;
+        
+    }
+};
